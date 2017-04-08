@@ -23,3 +23,18 @@ beetsQuestion.response = "I also like beets. (But not with cheese.)"
 
 // Default Initializers
 
+class ShoppingListItem {
+    var name: String?
+    var quantity = 1
+    var purchased = false
+}
+
+var item = ShoppingListItem()
+
+// memberwise initializers for structure types
+
+struct Size {
+    var width = 0.0, height = 0.0
+}
+
+let twoByTwo = Size(width: 2.0, height: 2.0)
