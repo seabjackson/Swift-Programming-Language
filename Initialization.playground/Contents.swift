@@ -4,7 +4,7 @@ import UIKit
 
 class SurveyQuestion {
     
-    var text: String
+    let text: String
     var response: String?
     
     init(text: String) {
@@ -16,7 +16,10 @@ class SurveyQuestion {
     }
 }
 
-    let cheeseQuestion = SurveyQuestion(text: "Do you like cheese?")
-    cheeseQuestion.ask()
+let beetsQuestion = SurveyQuestion(text: "How about beets?")
+beetsQuestion.ask()
 
-// Assigning Constant Properties During Initialization
+beetsQuestion.response = "I also like beets. (But not with cheese.)"
+
+// Default Initializers
+
