@@ -98,7 +98,14 @@ let twoThousand: UInt16 = 2_000
 let one: UInt8 = 1
 let twoThousandAndOne = twoThousand + UInt16(one)
 
+// Integer and Floating Point Conversion
 
+let three = 3
+let pointOneFourOneFiveNine = 0.14159
+let pi2 = Double(three) + pointOneFourOneFiveNine
+
+let integerPi = Int(pi)
+// interPi equalsl 3, and is inferred to be of type Int
 
 
 
