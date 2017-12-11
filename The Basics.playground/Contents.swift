@@ -158,6 +158,47 @@ if convertedNumber != nil {
     print("convertedNumber has an integer value of \(convertedNumber!).")
 }
 
+// Optional Binding
+
+if let actualNumber = Int(possibleNumber) {
+    print("\"\(possibleNumber)\" has an integer value of \(actualNumber)")
+} else {
+    print("\"\(possibleNumber)\" could not be converted to an integer")
+}
+
+if let firstNumber = Int("4"), let secondNumber = Int("42"), firstNumber < secondNumber && secondNumber < 100 {
+    print("\(firstNumber) < \(secondNumber) < 100")
+}
+
+if let firstNumber = Int("4") {
+    if let secondNumber = Int("42") {
+        if firstNumber < secondNumber && secondNumber < 100 {
+            print("\(firstNumber) < \(secondNumber) < 100")
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
