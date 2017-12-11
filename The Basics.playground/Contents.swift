@@ -134,9 +134,29 @@ if i == 1 {
     // this example will compile successfully
 }
 
+// TODO: Tuples
 
+// Optionals
 
+let possibleNumber = "123"
+let convertedNumber = Int(possibleNumber)
+// convertedNumber is inferred to be of type "Int?", or "optional Int"
 
+var serverResponseCode: Int? = 404
+// serverResponseCode contains an actual Int value of 404
+
+serverResponseCode = nil
+// serverResponseCode now contains no value
+
+// If Statements and Forced Unwrapping
+
+if convertedNumber != nil {
+    print("convertedNumber contains some integer value.")
+}
+
+if convertedNumber != nil {
+    print("convertedNumber has an integer value of \(convertedNumber!).")
+}
 
 
 
