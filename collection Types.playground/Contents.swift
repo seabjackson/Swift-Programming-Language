@@ -68,8 +68,76 @@ for (index, value) in shoppingList.enumerated() {
     print("Item \(index + 1): \(value)")
 }
 
-// Dictionaries
+// Sets
 
+// Hash Values for Set Types
+
+// Set Type Syntax
+
+// Creating and Initializing an Empty Set
+
+
+var letters = Set<Character>()
+print("letters is of type Set<Character> with \(letters.count) items.")
+
+letters.insert("a")
+letters = []
+
+// Creating a Set with an Array Literal
+var favoriteGenres: Set = ["Rock", "Classical", "Hip hop"]
+
+// Accessing and Modifying a Set
+print("I have \(favoriteGenres.count) favorite movie genres.")
+
+if favoriteGenres.isEmpty {
+    print("As far as music goes, I'm not picky.")
+} else {
+    print(" I have particular music preferences.")
+}
+
+favoriteGenres.insert("Jazz")
+
+if let removedGenre = favoriteGenres.remove("Rock") {
+    print("\(removedGenre)? I'm over it.")
+} else {
+    print("I've never much cared for that.")
+}
+
+if favoriteGenres.contains("Funk") {
+    print("I get up on the good foot.")
+} else {
+    print("It's too funky in here.")
+}
+
+// Iterating Over A Set
+for genre in favoriteGenres {
+    print("\(genre)")
+}
+
+for genre in favoriteGenres.sorted() {
+    print("\(genre)")
+}
+
+// Performing Set Operations
+
+// Fundamental Set Operations
+
+let oddDigits: Set = [1, 3, 5, 7, 9]
+let evenDigits: Set = [0, 2, 4, 6, 8]
+
+let singleDigitPrimeNumbers: Set = [2, 3, 5, 7]
+
+oddDigits.union(evenDigits).sorted()
+oddDigits.intersection(evenDigits).sorted()
+
+oddDigits.subtracting(singleDigitPrimeNumbers).sorted()
+
+oddDigits.symmetricDifference(singleDigitPrimeNumbers)
+
+// Set Membership and Equality
+
+
+// Dictionaries
 // Creating an Empty Dictionary
 
 var namesOfIntegers = [Int: String]()
