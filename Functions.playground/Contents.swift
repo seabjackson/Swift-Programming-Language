@@ -37,6 +37,35 @@ func greet(person: String, from hometown: String)   -> String {
 
 print(greet(person: "Bill", from: "Cupertino"))
 
+func greetAgain(person: String) -> String {
+    return "Hello again, " + person + "!"
+}
+
+// Functions with Multiple Parameter Values
+func greet(person: String, alreadyGreeted: Bool) -> String {
+    if alreadyGreeted {
+        return greetAgain(person: person)
+    } else {
+        return greet(person: person)
+    }
+}
+
+// Functions with Multiple Return Values
+func minMax(array: [Int]) -> (min: Int, max: Int) {
+    var currentMin = array[0]
+    var currentMax = array[0]
+    
+    for value in array[1..<array.count] {
+        if value < currentMin {
+            currentMin = value
+        } else if value > currentMax {
+            currentMax = value
+        }
+    }
+    return (currentMin, currentMax)
+}
+
+let bounds = minMax(array: [8, -6, 2, 109, 3, 71])
 // Nested Functions
 
 func chooseStepFunction(backward: Bool) -> (Int) -> Int {
@@ -55,4 +84,43 @@ while currentValue != 0 {
 
 print("zero!")
 
+// Function Types
+func addTwoInts(_ a: Int, _ b: Int) -> Int {
+    return a + b
+}
+
+func multiplyTwoInts(_ a: Int, _ b: Int) -> Int {
+    return a * b
+}
+
+func printHelloWorld() {
+    print("hello, world")
+}
+
+// Using Function Types
+
+var mathFunction: (Int, Int) -> Int = addTwoInts
+
+print("Result: \(mathFunction(2, 3))")
+mathFunction = multiplyTwoInts
+
+print("Result: \(mathFunction(2, 3))")
+
+// Function Types as Parameter Types
+
+func printMathResult(_ mathFunction: (Int, Int) -> Int, _ a: Int, _ b: Int) {
+    print("Result: \(mathFunction(a, b))")
+}
+
+printMathResult(addTwoInts, 3, 5)
+
+// Function Types as Return Types
+
+func stepForward(_ input: Int) -> Int {
+    return input + 1
+}
+
+func stepBackward(_ input: Int) -> Int {
+    return input - 1
+}
 
