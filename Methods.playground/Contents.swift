@@ -93,13 +93,26 @@ var player = Player(name: "Argyrios")
 player.complete(level: 1)
 print("highest unlocked level is now \(LevelTracker.highestUnlockedLevel)")
 
+// Assigning to self Within a Mutating Method
 
+enum TriStateSwitch {
+    case off, low, high
+    
+    mutating func next() {
+        switch self {
+        case .off:
+            self = .low
+        case .low:
+            self = .high
+        case .high:
+            self = .off
+        }
+    }
+}
 
-
-
-
-
-
+var ovenLight = TriStateSwitch.low
+ovenLight.next()
+ovenLight.next() 
 
 
 

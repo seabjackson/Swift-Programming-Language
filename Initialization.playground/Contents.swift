@@ -81,13 +81,13 @@ cheeseQuestion.response
 
 // Default Initializers
 
-class ShoppingListItem {
-    var name: String?
-    var quantity = 1
-    var purchased = false
-}
-
-var item = ShoppingListItem()
+//class ShoppingListItem {
+//    var name: String?
+//    var quantity = 1
+//    var purchased = false
+//}
+//
+//var item = ShoppingListItem()
 
 // MemberWise Initializers for Structure Types
 
@@ -99,12 +99,80 @@ let twoByTwo = Size(width: 2.0, height: 2.0)
 
 // Intializer Delegation for Value Types
 
+// Two-Phase Initialization
 
+// Initializer Inheritance and Overriding
 
+class Vehicle {
+    var numberOfWheels = 0
+    var description: String {
+        return "\(numberOfWheels) wheel(s)"
+    }
+}
 
+let vehicle = Vehicle()
+print("Vehicle: \(vehicle.description)")
 
+class Bicycle: Vehicle {
+    override init() {
+        super.init()
+        numberOfWheels = 2
+    }
+}
 
+// Designated and Convenience Initializers in Action
 
+class Food {
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
+    
+    convenience init() {
+        self.init(name: "[Unnamed]")
+    }
+}
+
+let namedMeat = Food(name: "Bacon")
+let mysterMeat = Food()
+
+class RecipeIngredient: Food {
+    var quantity: Int
+    init(name: String, quantity: Int) {
+        self.quantity = quantity
+        super.init(name: name)
+    }
+    
+    override convenience init(name: String) {
+        self.init(name: name, quantity: 1)
+    }
+}
+
+let oneMysteryItem = RecipeIngredient()
+let oneBacon = RecipeIngredient(name: "Bacon")
+let sixEggs = RecipeIngredient(name: "Eggs", quantity: 6)
+
+class ShoppingListItem: RecipeIngredient {
+    var purchased = false
+    var description: String {
+        var output = "\(quantity) x \(name)"
+        output += purchased ? " ✓" : " 𐄂"
+        return output
+    }
+}
+
+var breakfastList = [
+    ShoppingListItem(),
+    ShoppingListItem(name: "Bacon"),
+    ShoppingListItem(name: "Eggs", quantity: 6)
+]
+
+breakfastList[0].name = "Orange"
+breakfastList[0].purchased = true
+
+for item in breakfastList {
+    print(item.description)
+}
 
 
 
