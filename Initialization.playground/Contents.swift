@@ -175,22 +175,102 @@ for item in breakfastList {
 }
 
 
+// Failable Initializers
+
+let wholeNumber: Double = 12345.0
+let pi = 3.14159
+
+if let valueMaintained = Int(exactly: wholeNumber) {
+    print("\(wholeNumber) conversion to int maintains value of \(valueMaintained)")
+}
+
+let valueChanged = Int(exactly: pi)
+
+if valueChanged == nil {
+    print("\(pi) conversion to Int does not maintain value")
+}
+
+struct Animal {
+    let species: String
+    init?(species: String) {
+        if species.isEmpty { return nil }
+        self.species = species
+    }
+}
+
+let someCreature = Animal(species: "Giraffe")
+if let giraffe = someCreature {
+    print("An animal was intialized with a species of \(giraffe.species)")
+}
+
+let anonymousCreature = Animal(species: "")
+
+if anonymousCreature == nil {
+    print("The anonymous creature could not be initialized")
+}
+
+// Failable Initializers for Enumerations
+
+enum TemperatureUnit: Character {
+    case kelvin = "K", celsius = "C", fahrenheit = "F"
+}
 
 
+let fahrenheitUnit = TemperatureUnit(rawValue: "F")
+if fahrenheitUnit != nil {
+    print("This is a defined temperature unit, so initialization is successful")
+}
 
+let unknownUnit = TemperatureUnit(rawValue: "X")
+if unknownUnit == nil {
+    print("This is not a defined temperature unit, so initialization failed")
+}
 
+// Propagation of Initialization Failure
 
+class Product {
+    let name: String
+    init?(name: String) {
+        if name.isEmpty { return nil }
+        self.name = name
+    }
+}
 
+class CarItem: Product {
+    let quantity: Int
+    init?(name: String, quantity: Int) {
+        if quantity < 1 { return nil }
+        self.quantity = quantity
+        super.init(name: name)
+    }
+}
 
+if let twoSocks = CarItem(name: "sock", quantity: 2) {
+    print("Item: \(twoSocks.name), quantity: \(twoSocks.quantity)")
+}
 
+// Setting a Default Property Value with a Closure or Function
 
+struct Chessboard {
+    let boardColors: [Bool] = {
+        var temporaryBoard = [Bool]()
+        var isBlack = false
+        for i in 1...8 {
+            for j in 1...8 {
+                temporaryBoard.append(isBlack)
+                isBlack = !isBlack
+            }
+        }
+        return temporaryBoard
+    }()
+    
+    func squareIsBlackAt(row: Int, column: Int) -> Bool {
+        return boardColors[(row * 8) + column]
+    }
+}
 
-
-
-
-
-
-
+let board = Chessboard()
+print(board.squareIsBlackAt(row: 0, column: 1))
 
 
 
